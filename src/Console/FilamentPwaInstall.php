@@ -5,7 +5,7 @@ namespace Juniyasyos\FilamentPWA\Console;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\File;
-use Juniyasyos\ConsoleHelpers\Traits\RunCommand;
+use TomatoPHP\ConsoleHelpers\Traits\RunCommand;
 use Juniyasyos\FilamentPWA\Settings\PWASettings;
 
 class FilamentPwaInstall extends Command
