@@ -1,6 +1,6 @@
 <?php
 
-namespace TomatoPHP\FilamentPWA\Policies;
+namespace Juniyasyos\FilamentPWA\Policies;
 
 use App\Models\User;
 

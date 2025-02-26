@@ -1,6 +1,6 @@
 <?php
 
-namespace TomatoPHP\FilamentPWA\Settings;
+namespace Juniyasyos\FilamentPWA\Settings;
 
 use Spatie\LaravelSettings\Settings;
 

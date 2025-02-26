@@ -1,6 +1,6 @@
 <?php
 
-namespace TomatoPHP\FilamentPWA\Services;
+namespace Juniyasyos\FilamentPWA\Services;
 
 class ManifestService
 {

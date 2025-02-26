@@ -1,5 +1,5 @@
 {
-    "name": "tomatophp/filament-pwa",
+    "name": "juniyasyos/filament-pwa",
     "type": "library",
     "description": "get a PWA feature on your FilamentPHP app with settings from panel",
     "keywords": [
@@ -8,12 +8,13 @@
         "pwa",
         "filament",
         "tomatophp",
+        "juniyasyos",
         "filament-plugin"
     ],
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "TomatoPHP\\FilamentPWA\\": "src/"
+            "Juniyasyos\\FilamentPWA\\": "src/"
         }
     },
     "autoload-dev": {
@@ -24,13 +25,13 @@
     "extra": {
         "laravel": {
             "providers": [
-                "TomatoPHP\\FilamentPWA\\FilamentPwaServiceProvider"
+                "Juniyasyos\\FilamentPWA\\FilamentPwaServiceProvider"
             ]
         }
     },
     "authors": [
         {
-            "name": "Fady Mondy",
+            "name": "Ahmad Ilyas",
             "email": "info@3x1.io"
         }
     ],

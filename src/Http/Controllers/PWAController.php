@@ -1,6 +1,6 @@
 <?php
 
-namespace TomatoPHP\FilamentPWA\Http\Controllers;
+namespace Juniyasyos\FilamentPWA\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use TomatoPHP\FilamentPWA\Services\ManifestService;

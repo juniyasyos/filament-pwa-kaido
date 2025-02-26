@@ -1,6 +1,6 @@
 <?php
 
-namespace TomatoPHP\FilamentPWA;
+namespace Juniyasyos\FilamentPWA;
 
 use Filament\Panel;
 use Filament\Contracts\Plugin;

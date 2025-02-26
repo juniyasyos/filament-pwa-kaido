@@ -1,6 +1,6 @@
 <?php
 
-namespace TomatoPHP\FilamentPWA\Filament\Pages;
+namespace Juniyasyos\FilamentPWA\Filament\Pages;
 
 use Filament\Forms\Components\ColorPicker;
 use Filament\Forms\Components\Section;
@@ -28,7 +28,7 @@ use function Filament\Support\is_app_url;
 class PWASettingsPage extends SettingsPage
 {
     use UseShield;
-    
+
     protected static ?string $navigationIcon = 'heroicon-o-cog';
 
     protected static string $settings = PWASettings::class;

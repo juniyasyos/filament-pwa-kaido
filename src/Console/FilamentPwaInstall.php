@@ -1,6 +1,6 @@
 <?php
 
-namespace TomatoPHP\FilamentPWA\Console;
+namespace Juniyasyos\FilamentPWA\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
