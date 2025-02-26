@@ -3,7 +3,7 @@
 namespace Juniyasyos\FilamentPWA\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use TomatoPHP\FilamentPWA\Services\ManifestService;
+use Juniyasyos\FilamentPWA\Services\ManifestService;
 
 class PWAController extends Controller
 {

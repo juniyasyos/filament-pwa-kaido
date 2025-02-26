@@ -6,7 +6,7 @@ class ManifestService
 {
     public static function generate()
     {
-        $setting = new \TomatoPHP\FilamentPWA\Settings\PWASettings();
+        $setting = new \Juniyasyos\FilamentPWA\Settings\PWASettings();
         $basicManifest =  [
             'name' => $setting->pwa_app_name,
             'short_name' => $setting->pwa_short_name,

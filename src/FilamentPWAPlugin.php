@@ -7,14 +7,14 @@ use Filament\Contracts\Plugin;
 use Filament\View\PanelsRenderHook;
 use Illuminate\Support\Facades\Blade;
 use Filament\Support\Facades\FilamentView;
-use TomatoPHP\FilamentPWA\Settings\PWASettings;
+use Juniyasyos\FilamentPWA\Settings\PWASettings;
 use Filament\Support\Concerns\EvaluatesClosures;
-use TomatoPHP\FilamentPWA\Services\ManifestService;
+use Juniyasyos\FilamentPWA\Services\ManifestService;
 use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
-use TomatoPHP\FilamentPWA\Filament\Pages\PWASettingsPage;
-use TomatoPHP\FilamentSettingsHub\FilamentSettingsHubPlugin;
-use TomatoPHP\FilamentSettingsHub\Facades\FilamentSettingsHub;
-use TomatoPHP\FilamentSettingsHub\Services\Contracts\SettingHold;
+use Juniyasyos\FilamentPWA\Filament\Pages\PWASettingsPage;
+use Juniyasyos\FilamentSettingsHub\FilamentSettingsHubPlugin;
+use Juniyasyos\FilamentSettingsHub\Facades\FilamentSettingsHub;
+use Juniyasyos\FilamentSettingsHub\Services\Contracts\SettingHold;
 
 
 class FilamentPWAPlugin implements Plugin

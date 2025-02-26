@@ -4,10 +4,10 @@ namespace Juniyasyos\FilamentPWA;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
-use TomatoPHP\FilamentPWA\Policies\PWASettingsPolicy;
-use TomatoPHP\FilamentPWA\Filament\Pages\PWASettingsPage;
+use Juniyasyos\FilamentPWA\Policies\PWASettingsPolicy;
+use Juniyasyos\FilamentPWA\Filament\Pages\PWASettingsPage;
 use Illuminate\Support\Facades\Gate;
-use TomatoPHP\FilamentPWA\Services\ManifestService;
+use Juniyasyos\FilamentPWA\Services\ManifestService;
 
 
 class FilamentPwaServiceProvider extends ServiceProvider
@@ -16,7 +16,7 @@ class FilamentPwaServiceProvider extends ServiceProvider
     {
         //Register generate command
         $this->commands([
-           \TomatoPHP\FilamentPWA\Console\FilamentPwaInstall::class,
+           \Juniyasyos\FilamentPWA\Console\FilamentPwaInstall::class,
         ]);
 
         //Register Config file
