@@ -50,8 +50,7 @@ class FilamentPWAPlugin implements Plugin
     {
         if ($this->isShield()) {
             $panel->pages([PWASettingsPage::class])
-                ->plugin(FilamentSettingsHubPlugin::make())
-                ->plugin(FilamentShieldPlugin::make());
+                ->plugin(FilamentSettingsHubPlugin::make()->allowShield());
         }
     }
 
