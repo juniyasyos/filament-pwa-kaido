@@ -5,10 +5,8 @@ namespace Juniyasyos\FilamentPWA;
 use Filament\Panel;
 use Filament\Contracts\Plugin;
 use Filament\View\PanelsRenderHook;
-use Illuminate\Support\Facades\Blade;
 use Filament\Support\Facades\FilamentView;
 use Juniyasyos\FilamentPWA\Settings\PWASettings;
-use Filament\Support\Concerns\EvaluatesClosures;
 use Juniyasyos\FilamentPWA\Services\ManifestService;
 use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
 use Juniyasyos\FilamentPWA\Filament\Pages\PWASettingsPage;
@@ -16,13 +14,15 @@ use Juniyasyos\FilamentSettingsHub\FilamentSettingsHubPlugin;
 use Juniyasyos\FilamentSettingsHub\Facades\FilamentSettingsHub;
 use Juniyasyos\FilamentSettingsHub\Services\Contracts\SettingHold;
 
-
 class FilamentPWAPlugin implements Plugin
 {
-
     public static bool $allowPWASettings = true;
-
     public static bool|\Closure $allowShield = true;
+
+    public static function make(): static
+    {
+        return new static();
+    }
 
     public function allowPWASettings(bool $allow = true): static
     {
@@ -71,10 +71,5 @@ class FilamentPWAPlugin implements Plugin
                     ->group('filament-settings-hub::messages.group'),
             ]);
         }
-    }
-
-    public static function make(): static
-    {
-        return new static();
     }
 }
