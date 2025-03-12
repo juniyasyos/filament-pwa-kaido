@@ -1,17 +1,15 @@
-![Screenshot](https://raw.githubusercontent.com//tomatophp/filament-pwa/master/arts/3x1io-tomato-pwa.jpg)
-
 # Filament PWA
 
-[![Latest Stable Version](https://poser.pugx.org/tomatophp/filament-pwa/version.svg)](https://packagist.org/packages/tomatophp/filament-pwa)
-[![License](https://poser.pugx.org/tomatophp/filament-pwa/license.svg)](https://packagist.org/packages/tomatophp/filament-pwa)
-[![Downloads](https://poser.pugx.org/tomatophp/filament-pwa/d/total.svg)](https://packagist.org/packages/tomatophp/filament-pwa)
+[![Latest Stable Version](https://poser.pugx.org/juniyasyos/filament-pwa-kaido/version.svg)](https://packagist.org/packages/juniyasyos/filament-pwa-kaido)
+[![License](https://poser.pugx.org/juniyasyos/filament-pwa-kaido/license.svg)](https://packagist.org/packages/juniyasyos/filament-pwa-kaido)
+[![Downloads](https://poser.pugx.org/juniyasyos/filament-pwa-kaido/d/total.svg)](https://packagist.org/packages/juniyasyos/filament-pwa-kaido)
 
 get a PWA feature on your FilamentPHP app with settings from panel
 
 ## Installation
 
 ```bash
-composer require tomatophp/filament-pwa
+composer require juniyasyos/filament-pwa-kaido
 ```
 
 now you need to publish and migrate settings table
@@ -33,13 +31,6 @@ finally reigster the plugin on `/app/Providers/Filament/AdminPanelProvider.php`
 ->plugin(\Juniyasyos\FilamentPWA\FilamentPWAPlugin::make())
 ```
 
-## Screenshots
-
-![Install](https://raw.githubusercontent.com/tomatophp/filament-pwa/master/arts/install.png)
-![App](https://raw.githubusercontent.com/tomatophp/filament-pwa/master/arts/app.png)
-![Setting Hub](https://raw.githubusercontent.com/tomatophp/filament-pwa/master/arts/setting-hub.png)
-![Setting Page](https://raw.githubusercontent.com/tomatophp/filament-pwa/master/arts/setting-page.png)
-
 
 ## Use Directive
 
@@ -51,7 +42,14 @@ you can use directive to allow PWA on none-FilamentPHP pages, just add this dire
 
 ## Publish Assets
 
+```bash
+php artisan vendor:publish --tag="filament-pwa-lang"
+php artisan vendor:publish --tag="filament-pwa-views"
+php artisan vendor:publish --tag="filament-pwa-lang"
+```
+
 you can publish config file by use this command
+
 
 ```bash
 php artisan vendor:publish --tag="filament-pwa-config"
@@ -69,13 +67,6 @@ you can publish languages file by use this command
 php artisan vendor:publish --tag="filament-pwa-lang"
 ```
 
-## Support
-
-you can join our discord server to get support [TomatoPHP](https://discord.gg/vKV9U7gD3c)
-
-## Docs
-
-you can check docs of this package on [Docs](https://docs.tomatophp.com/plugins/filament-pwa)
 
 ## Changelog
 
@@ -87,7 +78,7 @@ Please see [SECURITY](SECURITY.md) for more information about security.
 
 ## Credits
 
-- [Fady Mondy](https://wa.me/+201207860084)
+- [Ahmad Ilyas](https://wa.me/+6285732431396)
 
 ## License
 

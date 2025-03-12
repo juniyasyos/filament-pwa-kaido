@@ -49,8 +49,7 @@ class FilamentPWAPlugin implements Plugin
     public function register(Panel $panel): void
     {
         if ($this->isShield()) {
-            $panel->pages([PWASettingsPage::class])
-                ->plugin(FilamentSettingsHubPlugin::make()->allowShield());
+            $panel->pages([PWASettingsPage::class]);
         }
     }
 
@@ -67,8 +66,8 @@ class FilamentPWAPlugin implements Plugin
                     ->label('filament-pwa::messages.settings.title')
                     ->icon('heroicon-o-sparkles')
                     ->page(PWASettingsPage::class)
-                    ->description('filament-pwa::messages.settings.description')
-                    ->group('filament-settings-hub::messages.group'),
+                    ->description('filament-pwa::messages.settings.description'),
+                    // ->group('filament-pwa::messages.settings.group'),
             ]);
         }
     }
