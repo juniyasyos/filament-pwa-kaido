@@ -31,6 +31,10 @@
     },
     "authors": [
         {
+            "name": "Fady Mondy",
+            "email": "info@3x1.io"
+        },
+        {
             "name": "Ahmad Ilyas",
             "email": "ahmadilyasdahlan@gmail.com"
         }
@@ -40,7 +44,6 @@
         "filament/filament": "^3.2",
         "filament/notifications": "^3.2",
         "filament/spatie-laravel-settings-plugin": "^3.2",
-        "juniyasyos/filament-settings-hub-kaido": "^3.0",
         "tomatophp/console-helpers": "^1.1"
     }
 }
