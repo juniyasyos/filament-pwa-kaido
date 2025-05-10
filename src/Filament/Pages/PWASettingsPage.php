@@ -22,12 +22,12 @@ use Filament\Forms\Components\FileUpload;
 use Juniyasyos\FilamentPWA\Settings\PWASettings;
 use Juniyasyos\FilamentSettingsHub\Settings\SitesSettings;
 use Juniyasyos\FilamentSettingsHub\Traits\UseShield;
-use function Filament\Support\is_app_url;
+use Juniyasyos\FilamentSettingsHub\Traits\HasSettingsBreadcrumbs;
 
 
 class PWASettingsPage extends SettingsPage
 {
-    use UseShield;
+    use UseShield, HasSettingsBreadcrumbs;
 
     protected static ?string $navigationIcon = 'heroicon-o-cog';
 
