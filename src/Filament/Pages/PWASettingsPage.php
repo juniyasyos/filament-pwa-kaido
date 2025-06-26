@@ -46,15 +46,15 @@ class PWASettingsPage extends SettingsPage
         return trans('filament-pwa::messages.settings.title');
     }
 
-    protected function getActions(): array
-    {
-        return [
-            Action::make('back')->action(fn()=> redirect()
-                ->route('filament.'.filament()->getCurrentPanel()->getId().'.pages.settings-hub'))
-                ->color('danger')
-                ->label(trans('filament-settings-hub::messages.back')),
-        ];
-    }
+    // protected function getActions(): array
+    // {
+    //     return [
+    //         Action::make('back')->action(fn()=> redirect()
+    //             ->route('filament.'.filament()->getCurrentPanel()->getId().'.pages.settings-hub'))
+    //             ->color('danger')
+    //             ->label(trans('filament-settings-hub::messages.back')),
+    //     ];
+    // }
 
 
     protected function getFormSchema(): array
