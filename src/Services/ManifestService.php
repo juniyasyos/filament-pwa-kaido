@@ -2,116 +2,136 @@
 
 namespace Juniyasyos\FilamentPWA\Services;
 
+use Juniyasyos\FilamentPWA\Settings\PWASettings;
+
 class ManifestService
 {
-    public static function generate()
+    public static function generate(): array
     {
-        $setting = new \Juniyasyos\FilamentPWA\Settings\PWASettings();
-        $basicManifest =  [
+        $setting = new PWASettings();
+
+        $basicManifest = [
             'name' => $setting->pwa_app_name,
             'short_name' => $setting->pwa_short_name,
-            'start_url' => asset($setting->pwa_start_url),
-            'display' => $setting->pwa_display,
-            'theme_color' => $setting->pwa_theme_color,
-            'background_color' => $setting->pwa_background_color,
-            'orientation' => $setting->pwa_orientation,
-            'status_bar' =>  $setting->pwa_status_bar,
-            'splash' =>  [
-                '640x1136' => $setting->pwa_splash_640x1136 ? '/storage/'.$setting->pwa_splash_640x1136 : "/images/icons/splash-640x1136.png",
-                '750x1334' => $setting->pwa_splash_750x1334 ? '/storage/'.$setting->pwa_splash_750x1334 : "/images/icons/splash-750x1334.png",
-                '828x1792' => $setting->pwa_splash_828x1792 ? '/storage/'.$setting->pwa_splash_828x1792 : "/images/icons/splash-828x1792.png",
-                '1125x2436' => $setting->pwa_splash_1125x2436 ? '/storage/'.$setting->pwa_splash_1125x2436 : "/images/icons/splash-1125x2436.png",
-                '1242x2208' => $setting->pwa_splash_1242x2208 ? '/storage/'.$setting->pwa_splash_1242x2208 : "/images/icons/splash-1242x2208.png",
-                '1242x2688' => $setting->pwa_splash_1242x2688 ? '/storage/'.$setting->pwa_splash_1242x2688 : "/images/icons/splash-1242x2688.png",
-                '1536x2048' => $setting->pwa_splash_1536x2048 ? '/storage/'.$setting->pwa_splash_1536x2048 : "/images/icons/splash-1536x2048.png",
-                '1668x2224' => $setting->pwa_splash_1668x2224 ? '/storage/'.$setting->pwa_splash_1668x2224 : "/images/icons/splash-1668x2224.png",
-                '1668x2388' => $setting->pwa_splash_1668x2388 ? '/storage/'.$setting->pwa_splash_1668x2388 : "/images/icons/splash-1668x2388.png",
-                '2048x2732' => $setting->pwa_splash_2048x2732 ? '/storage/'.$setting->pwa_splash_2048x2732 : "/images/icons/splash-2048x2732.png",
-            ],
-            'icons' => [
-                [
-                    'src' => $setting->pwa_icons_72x72 ? '/storage/'.$setting->pwa_icons_72x72 : "/images/icons/icon-72x72.png",
-                    'type' => 'image/png',
-                    'sizes' => "72x72",
-                    'purpose' => 'any'
-                ],
-                [
-                    'src' => $setting->pwa_icons_96x96 ? '/storage/'.$setting->pwa_icons_96x96 : "/images/icons/icon-96x96.png",
-                    'type' => 'image/png',
-                    'sizes' => "96x96",
-                    'purpose' => 'any'
-                ],
-                [
-                    'src' => $setting->pwa_icons_128x128 ? '/storage/'.$setting->pwa_icons_128x128 : "/images/icons/icon-128x128.png",
-                    'type' => 'image/png',
-                    'sizes' => "128x128",
-                    'purpose' => 'any'
-                ],
-                [
-                    'src' => $setting->pwa_icons_144x144 ? '/storage/'.$setting->pwa_icons_144x144 : "/images/icons/icon-144x144.png",
-                    'type' => 'image/png',
-                    'sizes' => "144x144",
-                    'purpose' => 'any'
-                ],
-                [
-                    'src' => $setting->pwa_icons_152x152 ? '/storage/'.$setting->pwa_icons_152x152 : "/images/icons/icon-152x152.png",
-                    'type' => 'image/png',
-                    'sizes' => "152x152",
-                    'purpose' => 'any'
-                ],
-                [
-                    'src' => $setting->pwa_icons_192x192 ? '/storage/'.$setting->pwa_icons_192x192 : "/images/icons/icon-192x192.png",
-                    'type' => 'image/png',
-                    'sizes' => "192x192",
-                    'purpose' => 'any'
-                ],
-                [
-                    'src' => $setting->pwa_icons_384x384 ? '/storage/'.$setting->pwa_icons_384x384 : "/images/icons/icon-384x384.png",
-                    'type' => 'image/png',
-                    'sizes' => "384x384",
-                    'purpose' => 'any'
-                ],
-                [
-                    'src' => $setting->pwa_icons_512x512 ? '/storage/'.$setting->pwa_icons_512x512 : "/images/icons/icon-512x512.png",
-                    'type' => 'image/png',
-                    'sizes' => "512x512",
-                    'purpose' => 'any'
-                ],
-            ]
+            'start_url' => asset($setting->pwa_start_url ?? '/'),
+            'display' => $setting->pwa_display ?? 'standalone',
+            'theme_color' => $setting->pwa_theme_color ?? '#000000',
+            'background_color' => $setting->pwa_background_color ?? '#ffffff',
+            'orientation' => $setting->pwa_orientation ?? 'portrait',
+            'status_bar' => $setting->pwa_status_bar ?? '#000000',
+            'splash' => static::getSplashScreens($setting),
+            'icons' => static::getIcons($setting),
         ];
 
-        foreach ($basicManifest['icons'] as $key=>$icon){
-            $fileInfo = pathinfo(storage_path('app/public/' .$icon['src']));
-            $basicManifest['icons'][$key]['type'] = 'image/' . $fileInfo['extension'];
-        }
-
-
-        if ($setting->pwa_shortcuts) {
-            foreach ($setting->pwa_shortcuts as $shortcut) {
-
-                if (array_key_exists("icon", $shortcut)) {
-                    $fileInfo = pathinfo(storage_path('app/public/' . $shortcut['icon']));
-                    $icon = [
-                        'src' => $shortcut['icon'],
-                        'type' => 'image/' . $fileInfo['extension'],
-                        'sizes' => "72x72",
-                        'purpose' => "any"
-                    ];
-                } else {
-                    $icon = [];
-                }
-
-                $basicManifest['shortcuts'][] = [
-                    'name' => trans($shortcut['name']),
-                    'description' => trans($shortcut['description']),
-                    'url' => $shortcut['url'],
-                    'icons' => [
-                        $icon
-                    ]
-                ];
-            }
+        if ($setting->pwa_shortcuts && is_array($setting->pwa_shortcuts)) {
+            $basicManifest['shortcuts'] = static::getShortcuts($setting->pwa_shortcuts);
         }
 
         return $basicManifest;
+    }
+
+    protected static function getSplashScreens(PWASettings $setting): array
+    {
+        $splashSizes = [
+            '640x1136',
+            '750x1334',
+            '828x1792',
+            '1125x2436',
+            '1242x2208',
+            '1242x2688',
+            '1536x2048',
+            '1668x2224',
+            '1668x2388',
+            '2048x2732',
+        ];
+
+        $splash = [];
+
+        foreach ($splashSizes as $size) {
+            $property = 'pwa_splash_'.$size;
+            $splash[$size] = $setting->$property
+                ? '/storage/'.$setting->$property
+                : "/images/icons/splash-{$size}.png";
+        }
+
+        return $splash;
+    }
+
+    protected static function getIcons(PWASettings $setting): array
+    {
+        $iconSizes = [
+            '72x72',
+            '96x96',
+            '128x128',
+            '144x144',
+            '152x152',
+            '192x192',
+            '384x384',
+            '512x512',
+        ];
+
+        $icons = [];
+
+        foreach ($iconSizes as $size) {
+            $property = 'pwa_icons_'.$size;
+            $src = $setting->$property
+                ? '/storage/'.$setting->$property
+                : "/images/icons/icon-{$size}.png";
+
+            $type = static::getImageType($src);
+
+            $icons[] = [
+                'src' => $src,
+                'type' => $type,
+                'sizes' => $size,
+                'purpose' => 'any',
+            ];
+        }
+
+        return $icons;
+    }
+
+    protected static function getShortcuts(array $shortcuts): array
+    {
+        $result = [];
+
+        foreach ($shortcuts as $shortcut) {
+            $shortcutData = [
+                'name' => trans($shortcut['name'] ?? ''),
+                'description' => trans($shortcut['description'] ?? ''),
+                'url' => $shortcut['url'] ?? '/',
+            ];
+
+            if (isset($shortcut['icon']) && $shortcut['icon']) {
+                $type = static::getImageType($shortcut['icon']);
+                
+                $shortcutData['icons'] = [
+                    [
+                        'src' => $shortcut['icon'],
+                        'type' => $type,
+                        'sizes' => '72x72',
+                        'purpose' => 'any',
+                    ],
+                ];
+            }
+
+            $result[] = $shortcutData;
+        }
+
+        return $result;
+    }
+
+    protected static function getImageType(string $path): string
+    {
+        $storagePath = storage_path('app/public/'.ltrim($path, '/storage/'));
+        
+        if (file_exists($storagePath)) {
+            $extension = pathinfo($storagePath, PATHINFO_EXTENSION);
+            return 'image/'.strtolower($extension);
+        }
+
+        // Fallback to path extension
+        $extension = pathinfo($path, PATHINFO_EXTENSION);
+        return 'image/'.strtolower($extension ?: 'png');
     }
 }

@@ -1,75 +1,24 @@
 <?php
 
+declare(strict_types=1);
+
+/**
+ * Backward Compatibility Layer
+ * 
+ * This file provides aliases for backward compatibility with existing code.
+ * These will be deprecated in future versions.
+ * 
+ * @deprecated Use Juniyasyos\FilamentPWA\Presentation\Filament\FilamentPWAPlugin instead
+ */
+
 namespace Juniyasyos\FilamentPWA;
 
-use Filament\Panel;
-use Filament\Contracts\Plugin;
-use Filament\View\PanelsRenderHook;
-use Filament\Support\Facades\FilamentView;
-use Juniyasyos\FilamentPWA\Settings\PWASettings;
-use Juniyasyos\FilamentPWA\Services\ManifestService;
-use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
-use Juniyasyos\FilamentPWA\Filament\Pages\PWASettingsPage;
-use Juniyasyos\FilamentSettingsHub\FilamentSettingsHubPlugin;
-use Juniyasyos\FilamentSettingsHub\Facades\FilamentSettingsHub;
-use Juniyasyos\FilamentSettingsHub\Services\Contracts\SettingHold;
+use Juniyasyos\FilamentPWA\Presentation\Filament\FilamentPWAPlugin as NewFilamentPWAPlugin;
 
-class FilamentPWAPlugin implements Plugin
+/**
+ * @deprecated Use Juniyasyos\FilamentPWA\Presentation\Filament\FilamentPWAPlugin instead
+ */
+class FilamentPWAPlugin extends NewFilamentPWAPlugin
 {
-    public static bool $allowPWASettings = true;
-    public static bool|\Closure $allowShield = true;
-
-    public static function make(): static
-    {
-        return new static();
-    }
-
-    public function allowPWASettings(bool $allow = true): static
-    {
-        static::$allowPWASettings = $allow;
-        return $this;
-    }
-
-    public function allowShield(bool $allow = true): static
-    {
-        static::$allowShield = $allow;
-        return $this;
-    }
-
-    public function isShield(): bool
-    {
-        return static::$allowShield;
-    }
-
-    public function getId(): string
-    {
-        return 'filament-pwa';
-    }
-
-    public function register(Panel $panel): void
-    {
-        if ($this->isShield()) {
-            $panel->pages([PWASettingsPage::class])
-                ->plugin(FilamentSettingsHubPlugin::make()->allowShield());
-        }
-    }
-
-    public function boot(Panel $panel): void
-    {
-        FilamentView::registerRenderHook(
-            PanelsRenderHook::HEAD_END,
-            fn() => view('filament-pwa::meta', ['config' => ManifestService::generate()])
-        );
-
-        if ($this->isShield()) {
-            FilamentSettingsHub::register([
-                SettingHold::make()
-                    ->label('filament-pwa::messages.settings.title')
-                    ->icon('heroicon-o-sparkles')
-                    ->page(PWASettingsPage::class)
-                    ->description('filament-pwa::messages.settings.description'),
-                // ->group('filament-pwa::messages.settings.group'),
-            ]);
-        }
-    }
+    // This class extends the new implementation for backward compatibility
 }

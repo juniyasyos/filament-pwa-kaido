@@ -25,7 +25,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Juniyasyos\\FilamentPWA\\FilamentPwaServiceProvider"
+                "Juniyasyos\\FilamentPWA\\Infrastructure\\Providers\\FilamentPwaServiceProvider"
             ]
         }
     },
@@ -41,9 +41,9 @@
     ],
     "require": {
         "php": "^8.2|^8.3|^8.4",
-        "filament/filament": "^3.3",
-        "filament/notifications": "^3.3",
-        "filament/spatie-laravel-settings-plugin": "^3.3",
+        "filament/filament": "^4.0",
+        "filament/notifications": "^4.0",
+        "filament/spatie-laravel-settings-plugin": "^4.0",
         "tomatophp/console-helpers": "^1.1"
     }
 }

@@ -1,11 +1,15 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+declare(strict_types=1);
 
-if(config('filament-pwa.allow_routes')){
-    Route::middleware(config('filament-pwa.middlewares'))->as('pwa.')->group(function()
-    {
-        Route::get('/manifest.json', [\Juniyasyos\FilamentPWA\Http\Controllers\PWAController::class, 'index'])->name('manifest');
-        Route::get('/offline/', [\Juniyasyos\FilamentPWA\Http\Controllers\PWAController::class, 'offline'])->name('offline');
-    });
+use Illuminate\Support\Facades\Route;
+use Juniyasyos\FilamentPWA\Infrastructure\Http\Controllers\PWAController;
+
+if (config('filament-pwa.allow_routes')) {
+    Route::middleware(config('filament-pwa.middlewares'))
+        ->as('pwa.')
+        ->group(function () {
+            Route::get('/manifest.json', [PWAController::class, 'manifest'])->name('manifest');
+            Route::get('/offline', [PWAController::class, 'offline'])->name('offline');
+        });
 }

@@ -2,17 +2,18 @@
 
 namespace Juniyasyos\FilamentPWA\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use Illuminate\Http\JsonResponse;
+use Illuminate\View\View;
 use Juniyasyos\FilamentPWA\Services\ManifestService;
 
-class PWAController extends Controller
+class PWAController
 {
-    public function index()
+    public function manifest(): JsonResponse
     {
         return response()->json(ManifestService::generate());
     }
 
-    public function offline()
+    public function offline(): View
     {
         return view('filament-pwa::offline');
     }
